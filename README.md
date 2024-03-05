@@ -1,2 +1,2 @@
 ### Platformengineers.io-production
- - This repo is use for Platformengineers Production environment
+  This repo is used for Platformengineers's production environment

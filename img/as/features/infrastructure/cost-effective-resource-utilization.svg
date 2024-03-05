@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512" x="0" y="0" viewBox="0 0 682.667 682.667" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
+  <g>
+    <defs stroke-width="19" style="stroke-width: 19;">
+      <clipPath id="a" clipPathUnits="userSpaceOnUse" stroke-width="19" style="stroke-width: 19;">
+        <path d="M0 512h512V0H0Z" fill="#8773ee" data-original="#000000" stroke-width="19" style="stroke-width: 19;"></path>
+      </clipPath>
+    </defs>
+    <g clip-path="url(#a)" transform="matrix(1.33333 0 0 -1.33333 0 682.667)" stroke-width="19" style="stroke-width: 19;">
+      <path d="M0 0h60c41.422 0 76 33.578 76 75 0 38.068-29.462 69.168-66.206 74.013C57.675 184.398 24.492 210-15 210c-5.405 0-10.637-.677-15.78-1.591C-51.337 244.991-90.047 270-135 270c-56.004 0-102.651-38.535-115.886-90.416-1.393.064-2.704.416-4.114.416-49.706 0-91-40.294-91-90s41.294-90 91-90h30" style="stroke-width: 19; stroke-linecap: square; stroke-linejoin: miter; stroke-miterlimit: 10; stroke-dasharray: none; stroke-opacity: 1;" transform="translate(361 227)" fill="none" stroke="#8773ee" stroke-width="19" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="none" stroke-opacity="" data-original="#000000" class=""></path>
+      <path d="M361 15H136v302h225z" style="stroke-width: 19; stroke-linecap: square; stroke-linejoin: miter; stroke-miterlimit: 10; stroke-dasharray: none; stroke-opacity: 1;" fill="none" stroke="#8773ee" stroke-width="19" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="none" stroke-opacity="" data-original="#000000" class=""></path>
+      <path d="M0 0h-225" style="stroke-width: 19; stroke-linecap: square; stroke-linejoin: miter; stroke-miterlimit: 10; stroke-dasharray: none; stroke-opacity: 1;" transform="translate(361 197)" fill="none" stroke="#8773ee" stroke-width="19" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="none" stroke-opacity="" data-original="#000000" class=""></path>
+      <path d="M0 0h-225" style="stroke-width: 19; stroke-linecap: square; stroke-linejoin: miter; stroke-miterlimit: 10; stroke-dasharray: none; stroke-opacity: 1;" transform="translate(361 137)" fill="none" stroke="#8773ee" stroke-width="19" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="none" stroke-opacity="" data-original="#000000" class=""></path>
+      <path d="M0 0h-150" style="stroke-width: 19; stroke-linecap: square; stroke-linejoin: miter; stroke-miterlimit: 10; stroke-dasharray: none; stroke-opacity: 1;" transform="translate(286 77)" fill="none" stroke="#8773ee" stroke-width="19" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="none" stroke-opacity="" data-original="#000000" class=""></path>
+      <path d="M0 0v-182" style="stroke-width: 19; stroke-linecap: square; stroke-linejoin: miter; stroke-miterlimit: 10; stroke-dasharray: none; stroke-opacity: 1;" transform="translate(211 197)" fill="none" stroke="#8773ee" stroke-width="19" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="none" stroke-opacity="" data-original="#000000" class=""></path>
+      <path d="M0 0v182" style="stroke-width: 19; stroke-linecap: square; stroke-linejoin: miter; stroke-miterlimit: 10; stroke-dasharray: none; stroke-opacity: 1;" transform="translate(286 15)" fill="none" stroke="#8773ee" stroke-width="19" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="none" stroke-opacity="" data-original="#000000" class=""></path>
+    </g>
+  </g>
+</svg>

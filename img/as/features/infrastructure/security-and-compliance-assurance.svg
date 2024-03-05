@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
+  <g>
+    <path d="M497 236.63c0 57.05-46.24 103.29-103.29 103.29h-29.98c7.85-21.39 12.77-44.51 12.77-68.86 0 0-80.83 7.17-120.5-60.25-39.67 67.42-120.5 60.25-120.5 60.25 0 24.35 4.92 47.47 12.77 68.86h-29.98C61.24 339.92 15 293.68 15 236.63c0-57.04 46.24-103.28 103.29-103.28 6.23 0 12.32.58 18.25 1.64C144.18 75.8 194.73 30.06 256 30.06S367.82 75.8 375.46 134.99c5.93-1.06 12.02-1.64 18.25-1.64 57.05 0 103.29 46.24 103.29 103.28z" style="stroke-width: 20; stroke-linejoin: round; stroke-miterlimit: 10;" fill="none" stroke="#8773ee" stroke-width="20" stroke-linejoin="round" stroke-miterlimit="10" data-original="#000000"></path>
+    <path d="M376.5 271.06c0 24.35-4.92 47.47-12.77 68.86C332.72 424.39 256 481.94 256 481.94s-76.72-57.55-107.73-142.02c-7.85-21.39-12.77-44.51-12.77-68.86 0 0 80.83 7.17 120.5-60.25 39.67 67.42 120.5 60.25 120.5 60.25z" style="stroke-width: 20; stroke-linejoin: round; stroke-miterlimit: 10;" fill="none" stroke="#8773ee" stroke-width="20" stroke-linejoin="round" stroke-miterlimit="10" data-original="#000000"></path>
+    <path d="m222.595 336.783 20.458 28.375 46.352-44.477" style="stroke-width: 20; stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 10;" fill="none" stroke="#8773ee" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" data-original="#000000"></path>
+  </g>
+</svg>

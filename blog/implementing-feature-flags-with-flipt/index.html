@@ -1,0 +1,174 @@
+<!doctype html>
+<html data-n-head-ssr lang="en" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D%7D">
+  <head>
+    <title>Implementing Feature Flags with Flipt Using Golang and gRPC | Platform Engineers</title><meta data-n-head="ssr" charset="utf-8"><meta data-n-head="ssr" http-equiv="Content-Language" content="en"><meta data-n-head="ssr" name="viewport" content="width=device-width,initial-scale=1"><meta data-n-head="ssr" name="format-detection" content="telephone=no"><meta data-n-head="ssr" name="author" content="Platform Engineers"><meta data-n-head="ssr" name="copyright" content="Platform Engineers"><meta data-n-head="ssr" name="robots" content="index, follow"><meta data-n-head="ssr" name="theme-color" content="#179bfd"><meta data-n-head="ssr" name="application-name" content="Platform Engineers"><meta data-n-head="ssr" name="msapplication-TileColor" content="#FFFFFF"><meta data-n-head="ssr" name="msapplication-TileImage" content="/img/favicon/ms-icon-144x144.png"><meta data-n-head="ssr" name="msapplication-square70x70logo" content="/img/favicon/ms-icon-70x70.png"><meta data-n-head="ssr" name="msapplication-square144x144logo" content="/img/favicon/ms-icon-144x144.png"><meta data-n-head="ssr" name="msapplication-square150x150logo" content="/img/favicon/ms-icon-150x150.png"><meta data-n-head="ssr" name="msapplication-square310x310logo" content="/img/favicon/ms-icon-310x310.png"><meta data-n-head="ssr" name="description" content="Effectively implement feature flags in your Golang application using Flipt and gRPC. This comprehensive guide covers everything from setting up Flipt to integrating it with your Golang service using gRPC. | Platform Engineers"><meta data-n-head="ssr" name="title" content="Implementing Feature Flags with Flipt Using Golang and gRPC | Platform Engineers"><meta data-n-head="ssr" property="og:type" content="website"><meta data-n-head="ssr" property="og:url" content="https://platformengineers.io/blog/implementing-feature-flags-with-flipt/"><meta data-n-head="ssr" property="og:title" content="Implementing Feature Flags with Flipt Using Golang and gRPC | Platform Engineers"><meta data-n-head="ssr" property="og:description" content="Effectively implement feature flags in your Golang application using Flipt and gRPC. This comprehensive guide covers everything from setting up Flipt to integrating it with your Golang service using gRPC. | Platform Engineers"><meta data-n-head="ssr" property="og:image" content="https://platformengineers.io/_nuxt/image/3b6f0e.png"><meta data-n-head="ssr" property="twitter:card" content="summary"><meta data-n-head="ssr" property="twitter:site" content=""><meta data-n-head="ssr" property="twitter:creator" content=""><meta data-n-head="ssr" property="twitter:title" content="Implementing Feature Flags with Flipt Using Golang and gRPC | Platform Engineers"><meta data-n-head="ssr" property="twitter:description" content="Effectively implement feature flags in your Golang application using Flipt and gRPC. This comprehensive guide covers everything from setting up Flipt to integrating it with your Golang service using gRPC. | Platform Engineers"><meta data-n-head="ssr" property="twitter:image" content="https://platformengineers.io/_nuxt/image/3b6f0e.png"><link data-n-head="ssr" href="https://fonts.googleapis.com" rel="preconnect"><link data-n-head="ssr" href="https://maps.googleapis.com" rel="preconnect"><link data-n-head="ssr" href="https://www.gstatic.com" rel="preconnect"><link data-n-head="ssr" rel="apple-touch-icon" sizes="57x57" href="/img/favicon/apple-icon-57x57.png"><link data-n-head="ssr" rel="apple-touch-icon" sizes="60x60" href="/img/favicon/apple-icon-60x60.png"><link data-n-head="ssr" rel="apple-touch-icon" sizes="72x72" href="/img/favicon/apple-icon-72x72.png"><link data-n-head="ssr" rel="apple-touch-icon" sizes="76x76" href="/img/favicon/apple-icon-76x76.png"><link data-n-head="ssr" rel="apple-touch-icon" sizes="114x114" href="/img/favicon/apple-icon-114x114.png"><link data-n-head="ssr" rel="apple-touch-icon" sizes="120x120" href="/img/favicon/apple-icon-120x120.png"><link data-n-head="ssr" rel="apple-touch-icon" sizes="144x144" href="/img/favicon/apple-icon-144x144.png"><link data-n-head="ssr" rel="apple-touch-icon" sizes="152x152" href="/img/favicon/apple-icon-152x152.png"><link data-n-head="ssr" rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-icon-180x180.png"><link data-n-head="ssr" rel="icon" type="image/x-icon" href="/img/favicon/favicon.ico"><link data-n-head="ssr" rel="icon" type="image/png" href="/img/favicon/favicon-16x16.png" sizes="16x16"><link data-n-head="ssr" rel="icon" type="image/png" href="/img/favicon/favicon-32x32.png" sizes="32x32"><link data-n-head="ssr" rel="icon" type="image/png" href="/img/favicon/favicon-96x96.png" sizes="96x96"><link data-n-head="ssr" rel="manifest" href="/manifest.json"><link data-n-head="ssr" rel="canonical" href="https://platformengineers.io/blog/implementing-feature-flags-with-flipt/"><link data-n-head="ssr" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/monokai-sublime.min.css"><script data-n-head="ssr" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Platform Engineers","alternateName":"Platform Engineers","url":"https://platformengineers.io/","image":"https://platformengineers.io/img/plateform-engineers.png","sameAs":[]}</script><link rel="preload" href="/_nuxt/7dc4e7c.js" as="script"><link rel="preload" href="/_nuxt/0f88427.js" as="script"><link rel="preload" href="/_nuxt/css/64240c5.css" as="style"><link rel="preload" href="/_nuxt/990548d.js" as="script"><link rel="preload" href="/_nuxt/b4cbe7a.js" as="script"><link rel="preload" href="/_nuxt/css/998d57e.css" as="style"><link rel="preload" href="/_nuxt/1d8d9a4.js" as="script"><link rel="preload" href="/_nuxt/css/01649ec.css" as="style"><link rel="preload" href="/_nuxt/accecf1.js" as="script"><link rel="stylesheet" href="/_nuxt/css/64240c5.css"><link rel="stylesheet" href="/_nuxt/css/998d57e.css"><link rel="stylesheet" href="/_nuxt/css/01649ec.css"><link rel="preload" href="/_nuxt/static/1725263364/blog/implementing-feature-flags-with-flipt/state.js" as="script"><link rel="preload" href="/_nuxt/static/1725263364/blog/implementing-feature-flags-with-flipt/payload.js" as="script"><link rel="preload" href="/_nuxt/static/1725263364/manifest.js" as="script">
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div><div><link rel="stylesheet" type="text/css" href="/dist/main.min.css" media="all"> <link rel="stylesheet" type="text/css" href="/dist/fontsicon.min.css"></div> <a id="start" rel="nofollow" aria-label="start point of page" href="javscript:void(0);"></a> <div class="main-container blog"><div class="blog-bk"><div class="nav-container"><div class="bar bar--sm visible-xs"><div class="container"><div class="row align-items-center"><div class="col-3 col-md-2"><a href="/"><img src="/_nuxt/image/e7b705.png" alt="Platform Engineers" loading="lazy" title="Platform Engineers"></a></div> <div class="col-9 col-md-10 text-right"><a href="#" aria-label="toggle" data-toggle-class="#menu1;hidden-xs" class="hamburger-toggle"><i class="icon icon--sm stack-interface stack-menu"></i></a></div></div></div></div> <nav id="menu1" data-scroll-class="366px:pos-fixed" class="bar bar--sm bar-1 hidden-xs"><div class="container"><div class="row align-items-center"><div class="hidden-xs d-flex align-items-center"><div class="bar__module"><a href="/"><img src="/_nuxt/image/418082.png" width="68" height="55" alt="Platform Engineers" loading="lazy" title="Platform Engineers"></a></div></div> <div class="col text-right text-left-xs text-left-sm"><div class="bar__module"><ul class="menu-horizontal text-left"><li><a href="/">Home</a></li> <li><a href="/about-us/">About Us</a></li> <li class="dropdown"><span class="dropdown__trigger">Services</span> <div class="dropdown__container"><div class="container"><div class="row"><div class="mt-1 dropdown__content col-lg-3 col-md-4 col-sm-6 p-3"><ul class="menu-vertical"><li><a href="/assessment/">Cost Assessment</a></li> <li><a href="/assessment/">Performance Assessment</a></li> <li><a href="/services/platform-engineering/">Platform Engineering</a></li><li><a href="/services/kubernetes-consulting-services/">Kubernetes Consulting Services</a></li><li><a href="/services/containerization/">Containerization</a></li><li><a href="/services/performance-optimization/">Performance Optimization</a></li><li><a href="/services/ci-cd-implementation/">CI/CD Implementation</a></li><li><a href="/services/infrastructure-maintenance-and-support/">Infra Maintenance & Support</a></li></ul></div></div></div></div></li> <li class="dropdown"><span class="dropdown__trigger">Industries</span> <div class="dropdown__container"><div class="container"><div class="row"><div class="mt-1 dropdown__content col-lg-3 col-md-4 col-sm-6 p-3"><ul class="menu-vertical"><li><a href="/industries/IoT/">IoT</a></li><li><a href="/industries/ecommerce/">eCommerce</a></li><li><a href="/industries/fintech/">FinTech</a></li><li><a href="/industries/SaaS/">SaaS</a></li><li><a href="/industries/enterprise/">Enterprise</a></li></ul></div></div></div></div></li> <li><a href="/blog/">Blog</a></li> <li><a href="/case-studies/">Case Studies</a></li></ul></div> <div class="bar__module"><div><a href="/contact-us/" title="contact" class="btn btn--primary type--uppercase b-30"><span class="btn__text"> Contact us </span></a></div></div></div></div></div></nav></div> <div class="container"><div class="row py-2"><div class="col-md-6 d-flex align-items-center justify-content-center"><div><h1 class="h2 mb-0">Implementing Feature Flags with Flipt Using Golang and gRPC</h1> <div class="lh-1 mb-3">
+          Mon, 02/09/2024 |
+          5 mins
+        </div> <!----> <!----> <div class="row"><div class="col-lg-4 col-md-12"><div class="d-flex align-items-center mt-3"><div class="d-flex align-items-center mr-2" style="border-radius:200px"><img src="/_nuxt/image/08abe5.png" width="32" height="40" alt="Implementing Feature Flags with Flipt Using Golang and gRPC" title="Implementing Feature Flags with Flipt Using Golang and gRPC" class="p-0 m-0 rounded author-s"></div> <div><strong class="m-0 p-0 lh-1">
+                  Munir
+                  Khakhi
+                </strong></div></div></div><div class="col-lg-4 col-md-12"><div class="d-flex align-items-center mt-3"><div class="d-flex align-items-center mr-2" style="border-radius:200px"><img src="/_nuxt/image/a07868.png" width="32" height="40" alt="Implementing Feature Flags with Flipt Using Golang and gRPC" title="Implementing Feature Flags with Flipt Using Golang and gRPC" class="p-0 m-0 rounded author-s"></div> <div><strong class="m-0 p-0 lh-1">
+                  Angita
+                  Shah
+                </strong></div></div></div></div> <!----></div></div> <div class="col-md-6 d-flex align-items-center justify-content-center"><img src="/_nuxt/image/95b2c1.png" height="400" alt="Implementing Feature Flags with Flipt Using Golang and gRPC | Platform Engineers" decoding="async" class="img-dim" style="color:transparent"></div></div></div></div> <section class="bg-- wave-bk-1 section-padding"><div class="container"><div class="row"><div class="col-lg-10 offset-lg-1 bs-11 p-5 b-30 bg-white"><div class="fc-lead ul-list"><p dir="ltr">Feature flags are a powerful tool in software development, allowing developers to enable or disable features in their applications dynamically. This can be particularly useful for continuous delivery, A/B testing, and managing the rollout of new features. In this blog, we will explore how to implement feature flags using Flipt, a self-contained feature flag solution, with Golang and gRPC. We will also delve into the benefits of using gRPC and how it can enhance internal communication and feature testing.</p>
+<h2 dir="ltr">What is Flipt?</h2>
+<p dir="ltr">Flipt is an open-source, self-hosted feature flag application that allows you to run experiments across services in your environment. It is built with Go and uses gRPC for communication, making it highly performant and scalable. The UI is built with Vue.js, providing a clean and intuitive interface for managing feature flags. (Here is the link to the GitHub page of Flipt: <a href="https://github.com/flipt-io/flipt">https://github.com/flipt-io/flipt</a> )</p>
+<h3 dir="ltr"><strong>Key Features of Flipt</strong></h3>
+<ul>
+<li dir="ltr" aria-level="1">
+<p dir="ltr" role="presentation">Feature flags allow you to enable or disable features without modifying the source code or requiring a redeploy. This can be done at runtime, giving you the flexibility to control feature visibility without code changes.<br><br></p>
+</li>
+<li dir="ltr" aria-level="1">
+<p dir="ltr" role="presentation">gRPC and REST APIs: Flipt supports both gRPC and REST APIs, allowing for high-performance and low-latency communication. This flexibility makes it easy to integrate with applications written in various languages.<br><br></p>
+</li>
+<li dir="ltr" aria-level="1">
+<p dir="ltr" role="presentation">Client-Side Evaluation: Flipt supports client-side evaluation, which reduces the number of requests to the server and improves performance. This is particularly useful for applications that require real-time feature flag evaluations.<br><br></p>
+</li>
+<li dir="ltr" aria-level="1">
+<p dir="ltr" role="presentation">GitOps Integration: Flipt is designed to integrate seamlessly with GitOps workflows, enabling continuous configuration and deployment. This ensures that feature flags are managed in a version-controlled manner, enhancing reliability and traceability.<br><br></p>
+</li>
+<li dir="ltr" aria-level="1">
+<p dir="ltr" role="presentation">Security and Control: Flipt supports various authentication methods, including HTTPS, OIDC, JWT, OAuth, and API tokens. This ensures that your feature flags are secure and can be managed without exposing your systems to external risks.</p>
+</li>
+</ul>
+<p dir="ltr"><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXcv3hY4IpUie3XTXa8z4X7u1qxVyklbFx9is84VjLwHcNWe2COJMVoAXuVNG_SMz5lha3844FrXc8XzzwZ2jB8tx40VP3ywM9Sr6PC6uU7m8xUF_vlXQ0t98LC9JMdBNNo_j5HOhF3qqVZO6_tJKGKt4_Lo?key=bvaOmXXC4jN_fIEr3ulIUw" width="900" height="340">  </p>
+<h2 dir="ltr">What is gRPC?</h2>
+<p dir="ltr">gRPC is a high-performance RPC framework that allows for efficient communication between microservices. It uses Protocol Buffers (protobuf) as the interface definition language and message format. gRPC is designed to work well with large-scale systems and is used by companies like Google and Netflix.</p>
+<p dir="ltr">As a platform engineer, you may want to use gRPC for internal communication between services because it provides a number of benefits, including:</p>
+<p dir="ltr">gRPC's explicit versioning and non-breaking changes ensure compatibility between different service versions. By defining API contracts in .proto files, clients and servers can negotiate capabilities during the RPC connection handshake. This allows for seamless communication even with different versions or extensions. gRPC supports non-breaking changes like adding new services, methods, or fields, ensuring existing clients continue to function without updates. This backward compatibility reduces the need for client notifications and updates, making it easier to manage service evolution.</p>
+<ul>
+<li dir="ltr" aria-level="1">
+<p dir="ltr" role="presentation"><strong>Improved performance: </strong>gRPC can help improve the performance of your services by reducing the overhead of serialization and deserialization.</p>
+</li>
+<li dir="ltr" aria-level="1">
+<p dir="ltr" role="presentation"><strong>Simplified error handling: </strong>gRPC provides a robust error handling mechanism that makes it easier to handle errors between services.</p>
+</li>
+<li dir="ltr" aria-level="1">
+<p dir="ltr" role="presentation"><strong>Improved security: </strong>gRPC provides built-in support for authentication and encryption, which can help improve the security of your services.</p>
+</li>
+</ul>
+<p dir="ltr">gRPC offers several advantages that make it well-suited for microservices architecture. Its high performance and low latency design are ideal for real-time applications. The framework supports load balancing and failover, ensuring efficient scalability. gRPC's multi-language support allows for seamless integration with various programming languages, while its efficient protobuf serialization reduces data transfer overhead, resulting in faster communication between services.</p>
+<h2 dir="ltr">Implementing Feature Flags with Flipt Using Golang and gRPC </h2>
+<p>(<a href="https://github.com/flipt-io/flipt/tree/main/sdk/go">https://github.com/flipt-io/flipt/tree/main/sdk/go</a>)</p>
+<h3 dir="ltr" style="font-size:20px">Step 1: Setting Up Flipt</h3>
+<p dir="ltr">To start using Flipt, you need to set up the server. You can do this by following the installation documentation provided by Flipt (<a href="https://docs.flipt.io/introduction">https://docs.flipt.io/introduction</a>). Once the server is up and running, you can manage your feature flags through the UI or via the REST or gRPC APIs.</p>
+<h3 dir="ltr" style="font-size:20px">Step 2: Creating a Golang Client</h3>
+<p dir="ltr">To integrate Flipt with your Golang application using gRPC, you need to generate the gRPC client. Flipt provides a pre-generated gRPC client for Go, which you can use directly.</p>
+<h4 dir="ltr">Example Golang Client Code</h4>
+<div dir="ltr" align="left">
+<pre><code>package main
+
+import (
+	"context"
+	"fmt"
+	"log"
+
+	flipt "go.flipt.io/flipt/rpc/flipt"
+	"go.flipt.io/flipt/rpc/flipt/evaluation"
+	sdk "go.flipt.io/flipt/sdk/go"
+	fliptgrpc "go.flipt.io/flipt/sdk/go/grpc"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
+)
+
+func main() {
+	conn, err := grpc.NewClient("localhost:9000", grpc.WithTransportCredentials(insecure.NewCredentials()))
+
+	if err != nil {
+		log.Fatal("error while connecting: ", err)
+	}
+	defer conn.Close()
+
+	transport := fliptgrpc.NewTransport(conn)
+
+	sdk := sdk.New(transport)
+
+	// For boolean flags
+	fliptClient := sdk.Flipt()
+	flag, err := fliptClient.GetFlag(context.Background(), &flipt.GetFlagRequest{
+		// NamespaceKey: "my_namespace", // optional - uses the default namespace
+		Key: "test",
+	})
+	if err != nil {
+		log.Fatalf("error in fetching flag: %v", err)
+	}
+
+	fmt.Println("Flag name: ", flag.Name)</code></pre>
+<h3 dir="ltr" style="font-size:20px">Step 3: Integrating Feature Flags into Your Application</h3>
+<p dir="ltr">Once you have the gRPC client set up, you can integrate feature flags into your application. This involves calling the EvalFlag method to determine whether a feature should be enabled or disabled for a given user.</p>
+<h4 dir="ltr">Example Integration</h4>
+<pre><code>package main
+
+import (
+	"context"
+	"fmt"
+	"log"
+
+	flipt "go.flipt.io/flipt/rpc/flipt"
+	"go.flipt.io/flipt/rpc/flipt/evaluation"
+	sdk "go.flipt.io/flipt/sdk/go"
+	fliptgrpc "go.flipt.io/flipt/sdk/go/grpc"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
+)
+
+func main() {
+	conn, err := grpc.NewClient("localhost:9000", grpc.WithTransportCredentials(insecure.NewCredentials()))
+
+	if err != nil {
+		log.Fatal("error while connecting: ", err)
+	}
+	defer conn.Close()
+
+	transport := fliptgrpc.NewTransport(conn)
+
+	sdk := sdk.New(transport)
+
+	// For boolean flags
+	fliptClient := sdk.Flipt()
+	flag, err := fliptClient.GetFlag(context.Background(), &flipt.GetFlagRequest{
+		// NamespaceKey: "my_namespace", // optional - uses the default namespace
+		Key: "test",
+	})
+	if err != nil {
+		log.Fatalf("error in fetching flag: %v", err)
+	}
+
+	fmt.Println("Flag name: ", flag.Name)
+
+	// For variant flags
+	evaluationClient := sdk.Evaluation()
+	variantFlag, err := evaluationClient.Variant(context.Background(), &evaluation.EvaluationRequest{
+		// NamespaceKey: "my_namespace",
+		FlagKey:  "Color",
+		EntityId: "my_entity_id",
+	})
+
+	if err != nil {
+		log.Fatalf("error in fetching variant flag: %v", err)
+	}
+	fmt.Println("Variant name: ", variantFlag.FlagKey) 
+}</code></pre>
+<h3 dir="ltr">Adding features in application (feature testing)</h3>
+<p>Feature testing is the process of testing new features in your application before they are released to production. This can be done using a variety of techniques, including:</p>
+<ul>
+<li dir="ltr" aria-level="1"><strong>Canaries:</strong> deploying a new feature to a small percentage of users to test its performance and behavior.</li>
+<li dir="ltr" aria-level="1"><strong>A/B testing:</strong> deploying two versions of a feature to different groups of users to compare their performance and behavior.</li>
+<li dir="ltr" aria-level="1"><strong>Feature flags: </strong>using feature flags to enable or disable features in your application, and testing their performance and behavior.</li>
+</ul>
+<p>By using feature flags, you can test new features in your application without affecting the user experience. You can also use feature flags to roll back features if they are not performing well.<strong> </strong></p>
+<h3 dir="ltr">What is OpenFeature?</h3>
+<p dir="ltr">OpenFeature is a CNCF (Cloud Native Computing Foundation) Sandbox project aimed at developing an open standard for feature flag management. It provides a unified API and SDK, allowing for a developer-first, cloud-native implementation with extensibility for open-source and enterprise use cases.</p>
+<p dir="ltr">Flipt's OpenFeature provider offers a standardized and extensible way to manage feature flags. It integrates with Flipt's feature flags using the OpenFeature API, supporting both HTTP(s) and gRPC transports. The provider ensures compliance with the OpenFeature specification and includes hooks for custom actions. This integration benefits users by providing a standardized approach, fostering community-driven development, and simplifying integration with existing applications.</p>
+<p><strong>Community and Support</strong></p>
+<p dir="ltr">Flipt encourages community involvement and support for its OpenFeature integration. Users can reach out through Discord or email for feedback, to request specific language support, or to learn more about how Flipt can help their organization with feature flags.</p>
+<p dir="ltr">Flipt's support for OpenFeature enhances its feature management capabilities by providing a standardized, extensible, and developer-friendly way to manage feature flags, aligning with the principles of cloud-native and DevOps practices.</p>
+<h3 dir="ltr"><strong>Conclusion</strong></h3>
+<p dir="ltr">Implementing feature flags with Flipt using Golang and gRPC offers a robust and scalable solution for managing the rollout of new features, conducting A/B testing, and ensuring continuous delivery. Flipt's use of gRPC ensures high-performance and low-latency communication, while its support for both gRPC and REST APIs enables easy integration with various applications. The client-side evaluation feature reduces server load, and GitOps integration enhances reliability and traceability. Flipt provides robust security measures and simplified error handling. </p>
+<p dir="ltr">However, setting up Flipt and managing code complexity are initial challenges. Ensuring scalability and properly managing toggle configuration are also crucial considerations.</p>
+</div></div> <hr> <div class="d-flex align-items-center flex-wrap"></div> <hr> <div class="article__share mt-0"><ul class="social-list list-inline list--hover blog_social" style="margin:0!important;padding:0!important"><li class="list-inline-item mr-0"><a href="javascript:void(0)" class="share-network-email"><i class="socicon socicon-google icon icon--xs"></i></a></li> <li class="list-inline-item mr-0"><a href="javascript:void(0)" class="share-network-linkedin"><i class="socicon socicon-linkedin icon icon--xs"></i></a></li> <li class="list-inline-item mr-0"><a href="javascript:void(0)" class="share-network-twitter"><i class="socicon socicon-twitter icon icon--xs"></i></a></li> <li class="list-inline-item mr-0"><a href="javascript:void(0)" class="share-network-facebook"><i class="socicon socicon-facebook icon icon--xs"></i></a></li> <li class="list-inline-item mr-0"><a href="javascript:void(0)" class="share-network-whatsapp"><i class="socicon socicon-whatsapp icon icon--xs"></i></a></li></ul></div></div></div></div></section></div> <footer class="pt-4 pb-0 footer-2 bg--dark" data-v-1a1e3611><div class="container" data-v-1a1e3611><div class="row" data-v-1a1e3611><div class="col-md-3 col-sm-6 col-12 mb-5" data-v-1a1e3611><h3 class="type--uppercase m-0 h6" data-v-1a1e3611>Company</h3> <ul class="list--hover mb-1" data-v-1a1e3611><li data-v-1a1e3611><a href="/about-us/" data-v-1a1e3611>About Us</a></li></ul> <ul class="list--hover d-flex mt-2 icons" data-v-1a1e3611><li data-v-1a1e3611><a href="https://www.facebook.com/profile.php?id=61555276800801" title="Platform Engineers facebook page" target="_blank" data-v-1a1e3611><i class="socicon socicon-facebook icon icon--xs" data-v-1a1e3611></i></a></li> <li class="px-2" data-v-1a1e3611><a href="https://twitter.com/platform_engr" title="Platform Engineers twitter account" target="_blank" data-v-1a1e3611><i class="socicon socicon-twitter icon icon--xs" data-v-1a1e3611></i></a></li> <li class="px-1" data-v-1a1e3611><a href="https://www.linkedin.com/company/platform-engineers/mycompany/" title="Platform Engineers linkedin page" target="_blank" data-v-1a1e3611><i class="socicon socicon-linkedin icon icon--xs" data-v-1a1e3611></i></a></li></ul> <h3 class="type--uppercase m-0 h6" data-v-1a1e3611>Resources</h3> <ul class="list--hover" data-v-1a1e3611><li data-v-1a1e3611><a href="/blog/" data-v-1a1e3611>Blog</a></li> <li data-v-1a1e3611><a href="/case-studies/" data-v-1a1e3611>Case Studies</a></li></ul></div> <div class="col-md-3 col-sm-6 col-12 mb-5" data-v-1a1e3611><h3 class="type--uppercase m-0 h6" data-v-1a1e3611>Services</h3> <ul class="list--hover" data-v-1a1e3611><li data-v-1a1e3611><a href="/services/platform-engineering/" data-v-1a1e3611>Platform Engineering</a></li><li data-v-1a1e3611><a href="/services/kubernetes-consulting-services/" data-v-1a1e3611>Kubernetes Consulting Services</a></li><li data-v-1a1e3611><a href="/services/containerization/" data-v-1a1e3611>Containerization</a></li><li data-v-1a1e3611><a href="/services/performance-optimization/" data-v-1a1e3611>Performance Optimization</a></li><li data-v-1a1e3611><a href="/services/ci-cd-implementation/" data-v-1a1e3611>CI/CD Implementation</a></li><li data-v-1a1e3611><a href="/services/infrastructure-maintenance-and-support/" data-v-1a1e3611>Infra Maintenance & Support</a></li></ul></div> <div class="col-md-3 col-sm-6 col-12 mb-5" data-v-1a1e3611><h3 class="type--uppercase m-0 h6" data-v-1a1e3611>Industries</h3> <ul class="list--hover" data-v-1a1e3611><li data-v-1a1e3611><a href="/industries/IoT/" data-v-1a1e3611>IoT</a></li><li data-v-1a1e3611><a href="/industries/ecommerce/" data-v-1a1e3611>eCommerce</a></li><li data-v-1a1e3611><a href="/industries/fintech/" data-v-1a1e3611>FinTech</a></li><li data-v-1a1e3611><a href="/industries/SaaS/" data-v-1a1e3611>SaaS</a></li><li data-v-1a1e3611><a href="/industries/enterprise/" data-v-1a1e3611>Enterprise</a></li></ul></div> <div class="col-md-3 col-sm-6 col-12 mb-5" data-v-1a1e3611><h3 class="type--uppercase m-0 h6" data-v-1a1e3611>Support</h3> <ul class="list--hover" data-v-1a1e3611><li data-v-1a1e3611><a href="/contact-us/" data-v-1a1e3611>Contact Us</a></li></ul> <h3 class="type--uppercase m-0 h6" data-v-1a1e3611>Assessment</h3> <ul class="list--hover" data-v-1a1e3611><li data-v-1a1e3611><a href="/assessment/" data-v-1a1e3611>Cost Assessment</a></li> <li data-v-1a1e3611><a href="/assessment/" data-v-1a1e3611>Performance Assessment</a></li></ul></div></div></div> <div class="sub-footer mt-3" data-v-1a1e3611><div class="col-md-12 text-center" data-v-1a1e3611><span class="type--fine-print" data-v-1a1e3611>© <span class="update-year" data-v-1a1e3611></span> Platform Engineers</span></div></div></footer> <a href="#start" data-scroll-class="100vh:active" title="click & go to top of the page" aria-label="click & go to top of the page" class="back-to-top inner-link"><i class="stack-interface stack-up-open-big"></i></a></div></div></div><script defer src="/_nuxt/static/1725263364/blog/implementing-feature-flags-with-flipt/state.js"></script><script src="/_nuxt/7dc4e7c.js" defer></script><script src="/_nuxt/1d8d9a4.js" defer></script><script src="/_nuxt/accecf1.js" defer></script><script src="/_nuxt/0f88427.js" defer></script><script src="/_nuxt/990548d.js" defer></script><script src="/_nuxt/b4cbe7a.js" defer></script><script data-n-head="ssr" src="https://www.googletagmanager.com/gtag/js?id=G-LRC7N9VH4L" data-body="true"></script><script data-n-head="ssr" src="/google-tag.js" data-body="true"></script><script data-n-head="ssr" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" data-body="true"></script><script data-n-head="ssr" src="/js/hljs.js" data-body="true"></script>
+  </body>
+</html>
